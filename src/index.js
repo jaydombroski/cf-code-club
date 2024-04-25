@@ -8,8 +8,15 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-export default {
+// src/index.js
+var src_default = {
 	async fetch(request, env, ctx) {
-		return new Response('Hello World!');
-	},
-};
+	  console.log("Logging: " + request.url)
+	  return new Response("Hello World!");
+	}
+  };
+  export {
+	src_default as default
+  };
+  //# sourceMappingURL=index.js.map
+  
