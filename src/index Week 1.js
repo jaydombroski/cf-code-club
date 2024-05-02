@@ -11,20 +11,24 @@
 // src/index.js
 var src_default = {
 	async fetch(request, env, ctx) {
-		const max = 4;
-		const key = Math.floor((Math.random() * max) + 1);
+		
+		console.log(request.method);
 
-		const phraseMap = {
-			1: "How 'bout them apples.",
-			2: "If you're going to be dumb, you better be tough",
-			3: "Shut'r down Clancy, she's pumping mud",
-			4: "There's a snake in my boots!",
-		  };
-		return new Response(phraseMap[key], {
-			headers: {
-				'content-type' : 'text/plain',
-			},
-		});
+		if(request.method === "POST"){
+			return new Response('{method: "POST"}', {
+				headers: {
+					'content-type' : 'application/json',
+				},
+			});
+		}
+		else{
+			return new Response('Error Worker! No Post', {
+				headers: {
+					'content-type' : 'text/plain',
+				},
+			});
+		}
+	  
 	}
   };
 
